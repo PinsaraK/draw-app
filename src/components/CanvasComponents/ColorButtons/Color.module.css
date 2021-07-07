@@ -1,15 +1,18 @@
 .colors {
   position: absolute;
-  margin-top: 2rem;
-  top: 1rem;
-  left: 1rem;
+  top: 3.5rem;
+  left: 0;
+  padding: 0.8rem;
+  margin: 0.5rem;
+  background-color: #f2f2f2;
+  border-radius: 20%;
 }
 
 .color-item {
   position: absolute;
   margin: 0 5px 0px 5px;
-  top: 0rem;
-  left: 2rem;
+  top: 0.2rem;
+  left: 3.5rem;
 }
 
 .color-container {
