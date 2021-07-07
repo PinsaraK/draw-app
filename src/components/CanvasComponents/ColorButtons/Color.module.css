@@ -1,0 +1,32 @@
+.colors {
+  position: absolute;
+  margin-top: 2rem;
+  top: 1rem;
+  left: 1rem;
+}
+
+.color-item {
+  position: absolute;
+  margin: 0 5px 0px 5px;
+  top: 0rem;
+  left: 2rem;
+}
+
+.color-container {
+  position: relative;
+  background-color: #f2f2f2;
+  border-radius: 20%;
+  margin: 0 1rem 0.5rem 1rem;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.color-container-circle {
+  position: absolute;
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 50%;
+  justify-content: center;
+  top: 25%;
+  left: 25%;
+}

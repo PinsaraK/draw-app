@@ -4,7 +4,6 @@ export const CanvasContext = React.createContext();
 
 export const CanvasProvider = (props) => {
   const [isDrawing, setIsDrawing] = useState(false);
-  const [isErasing, setIsErasing] = useState(true);
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
 
@@ -45,19 +44,13 @@ export const CanvasProvider = (props) => {
   };
 
   const setColor = (color) => {
+    contextRef.current.lineWidth = 5;
     contextRef.current.strokeStyle = color;
   };
 
   const erase = () => {
-    setIsErasing(!isErasing);
-    console.log(isErasing);
-    if (!isErasing) {
-      setColor("black");
-      contextRef.current.lineWidth = 5;
-      return;
-    }
     contextRef.current.lineWidth = 50;
-    setColor("white");
+    contextRef.current.strokeStyle = "white";
   };
   const clearCanvas = () => {
     const canvas = canvasRef.current;
@@ -75,6 +68,7 @@ export const CanvasProvider = (props) => {
     clearCanvas,
     draw,
     erase,
+    setColor,
   };
 
   return (
