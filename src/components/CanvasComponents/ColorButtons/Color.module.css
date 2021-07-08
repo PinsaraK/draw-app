@@ -1,17 +1,20 @@
 .color-item {
   position: absolute;
-  padding: 0 1.25rem;
-  top: 4.2rem;
+  display: flex;
+  padding: 0 0.8rem;
+  justify-content: space-evenly;
+  height: 2.5rem;
+  width: 25rem;
+  top: 14.2rem;
   left: 4.5rem;
 }
 
 .color-container {
   position: relative;
-  background-color: #e0e0e0;
+  background-color: #d0d0d0;
   border-radius: 20%;
-  margin-bottom: 0.5rem;
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 100%;
+  width: 10%;
 }
 
 .color-container-circle {

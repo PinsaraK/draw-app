@@ -7,9 +7,16 @@ import styles from "./CanvasOptions.module.css";
 const Options = () => {
   return (
     <div className={styles["canvas-options"]}>
-      <Eraser />
-      <ColorExpander />
-      <ResetCanvas />
+      <p className={styles.logo}>
+        Draww
+        <br />
+        App
+      </p>
+      <div className={styles.selectors}>
+        <Eraser />
+        <ColorExpander />
+        <ResetCanvas />
+      </div>
     </div>
   );
 };
