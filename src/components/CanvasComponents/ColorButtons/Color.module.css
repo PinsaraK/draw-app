@@ -1,12 +1,3 @@
-.colors {
-  top: 3.5rem;
-  left: 0;
-  padding: 0.8rem;
-  margin: 0.5rem;
-  background-color: #f2f2f2;
-  border-radius: 20%;
-}
-
 .color-item {
   position: absolute;
   padding: 0 1.25rem;

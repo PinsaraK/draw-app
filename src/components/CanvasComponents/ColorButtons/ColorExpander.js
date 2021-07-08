@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../../UIComponents/Button";
 import Color from "./Color";
 import styles from "./Color.module.css";
 
@@ -26,15 +27,7 @@ const ColorExpander = () => {
 
   return (
     <React.Fragment>
-      <div
-        className={styles.colors}
-        style={
-          showColor
-            ? { backgroundColor: "#D0D0D0" }
-            : { backgroundColor: "#f2f2f2" }
-        }
-        onClick={showColorsHandler}
-      >
+      <Button color={showColor} click={showColorsHandler}>
         Colors
         {showColor && (
           <div
@@ -47,7 +40,7 @@ const ColorExpander = () => {
             })}
           </div>
         )}
-      </div>
+      </Button>
     </React.Fragment>
   );
 };

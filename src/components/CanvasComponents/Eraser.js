@@ -1,14 +1,11 @@
 import React, { useContext } from "react";
 import { CanvasContext } from "../../store/CanvasContext";
+import Button from "../UIComponents/Button";
 
 const Eraser = () => {
   const { erase } = useContext(CanvasContext);
 
-  return (
-    <div className="eraser" onClick={erase}>
-      Eraser
-    </div>
-  );
+  return <Button click={erase}>Eraser</Button>;
 };
 
 export default Eraser;
