@@ -26,11 +26,20 @@ const ColorExpander = () => {
 
   return (
     <React.Fragment>
-      <div className={styles.colors} onMouseOver={showColorsHandler}>
+      <div
+        className={styles.colors}
+        style={
+          showColor
+            ? { backgroundColor: "#D0D0D0" }
+            : { backgroundColor: "#f2f2f2" }
+        }
+        onClick={showColorsHandler}
+      >
         Colors
         {showColor && (
           <div
             className={styles["color-item"]}
+            onMouseEnter={showColorsHandler}
             onMouseLeave={hideColorsHandler}
           >
             {COLORS.map((color) => {
