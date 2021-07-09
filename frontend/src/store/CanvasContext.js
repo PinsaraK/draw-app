@@ -58,6 +58,14 @@ export const CanvasProvider = (props) => {
     context.fillStyle = "white";
     context.fillRect(0, 0, canvas.width, canvas.height);
   };
+  const getDrawingData = () => {
+    if (!contextRef) return {};
+    if (!contextRef.current) return {};
+    return {
+      color: contextRef.current.strokeStyle,
+      lineWidth: contextRef.current.lineWidth,
+    };
+  };
 
   const contextValue = {
     canvasRef,
@@ -69,6 +77,7 @@ export const CanvasProvider = (props) => {
     draw,
     erase,
     setColor,
+    getDrawingData,
   };
 
   return (
