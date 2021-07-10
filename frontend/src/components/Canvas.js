@@ -17,7 +17,6 @@ const Canvas = () => {
     finishDrawing,
     draw,
     canvasRef,
-    getDrawingData,
     socketDrawing,
   } = canvasCtx;
 
