@@ -18,4 +18,7 @@ const io = socket(server, {
 
 io.on("connection", (socket) => {
   console.log("new user connected: " + socket.id);
+  socket.on("drawing-sent", (data) => {
+    socket.broadcast.emit("drawing-received", data);
+  });
 });

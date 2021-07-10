@@ -1,8 +1,15 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CanvasContext } from "../store/CanvasContext";
 import { io } from "socket.io-client";
 
+const socket = io("http://localhost:8080", {
+  transports: ["websocket", "polling", "flashsocket"],
+});
+
+var emitTimer;
 const Canvas = () => {
+  const [isDrawing, setIsDrawing] = useState(false);
+
   const canvasCtx = useContext(CanvasContext);
   const {
     prepareCanvas,
@@ -11,28 +18,43 @@ const Canvas = () => {
     draw,
     canvasRef,
     getDrawingData,
+    socketDrawing,
   } = canvasCtx;
-
-  const socket = io("http://localhost:8080", {
-    transports: ["websocket", "polling", "flashsocket"],
-  });
 
   useEffect(() => {
     prepareCanvas();
   }, [prepareCanvas]);
 
-  const drawingHandler = (event) => {
-    draw(event);
-    const { offsetX, offsetY } = event.nativeEvent;
-    const drawData = getDrawingData();
-    const canvasData = { ...drawData, x: offsetX, y: offsetY };
-    socket.emit("drawing", canvasData);
+  const startDrawingHandler = (event) => {
+    startDrawing(event);
+    setIsDrawing(true);
   };
+  const finishDrawingHandler = () => {
+    finishDrawing();
+    setIsDrawing(false);
+  };
+  const drawingHandler = (event) => {
+    if (!isDrawing) return;
+    clearTimeout(emitTimer);
+
+    draw(event);
+    const canvasData = canvasRef.current.toDataURL("image/png");
+    emitTimer = setTimeout(emitData.bind(null, canvasData), 1000);
+  };
+
+  const emitData = (data) => {
+    socket.emit("drawing-sent", data);
+  };
+
+  socket.on("drawing-received", (data) => {
+    //console.log();
+    socketDrawing(data);
+  });
 
   return (
     <canvas
-      onMouseDown={startDrawing}
-      onMouseUp={finishDrawing}
+      onMouseDown={startDrawingHandler}
+      onMouseUp={finishDrawingHandler}
       onMouseMove={drawingHandler}
       ref={canvasRef}
     />

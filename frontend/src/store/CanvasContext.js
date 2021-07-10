@@ -43,6 +43,13 @@ export const CanvasProvider = (props) => {
     contextRef.current.stroke();
   };
 
+  const socketDrawing = (data) => {
+    const image = new Image();
+    image.onload = () => {
+      contextRef.current.drawImage(image, 0, 0);
+    };
+    image.src = data;
+  };
   const setColor = (color) => {
     contextRef.current.lineWidth = 5;
     contextRef.current.strokeStyle = color;
@@ -78,6 +85,7 @@ export const CanvasProvider = (props) => {
     erase,
     setColor,
     getDrawingData,
+    socketDrawing,
   };
 
   return (
