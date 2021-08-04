@@ -9,17 +9,19 @@ export const CanvasProvider = (props) => {
 
   const prepareCanvas = useCallback(() => {
     const canvas = canvasRef.current;
-    canvas.width = window.innerWidth * 2;
-    canvas.height = window.innerHeight * 2;
-    canvas.style.width = `${window.innerWidth}px`;
-    canvas.style.height = `${window.innerHeight}px`;
+    canvas.width = window.innerWidth * 0.95;
+    canvas.height = window.innerHeight * 0.95;
+    canvas.style.width = `${window.innerWidth * 0.95}px`;
+    canvas.style.height = `${window.innerHeight * 0.95}px`;
 
     const context = canvas.getContext("2d");
-    context.scale(2, 2);
+    //context.scale(2, 2);
     context.lineCap = "round";
     context.strokeStyle = "black";
     context.lineWidth = 5;
     contextRef.current = context;
+    context.fillStyle = "white";
+    context.fillRect(0, 0, canvas.width, canvas.height);
   }, []);
 
   const startDrawing = ({ nativeEvent }) => {

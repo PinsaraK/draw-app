@@ -46,7 +46,7 @@ const Canvas = () => {
   };
 
   socket.on("drawing-received", (data) => {
-    //console.log();
+    console.log();
     socketDrawing(data);
   });
 
