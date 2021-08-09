@@ -1,3 +1,13 @@
+## Running the nodejs container
+
+First clone the repo and build the api image with:
+
+docker build -t draw-app/api:1.0 .
+
+Then do:
+
+docker-compose up
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
