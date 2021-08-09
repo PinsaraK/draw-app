@@ -2,11 +2,11 @@
 
 First clone the repo and build the api image with:
 
-docker build -t draw-app/api:1.0 .
+### `docker build -t draw-app/api:1.0 .`
 
 Then do:
 
-docker-compose up
+### `docker-compose up`
 
 # Getting Started with Create React App
 
