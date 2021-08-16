@@ -18,7 +18,12 @@ const io = socket(server, {
 
 io.on("connection", (socket) => {
   console.log("new user connected: " + socket.id);
-  socket.on("drawing-sent", (data) => {
-    socket.broadcast.emit("drawing-received", data);
+  socket.on("drawing-sent", (data, room) => {
+    //socket.broadcast.emit("drawing-received", data);
+    if (room === "") return;
+    else socket.to(room).emit("drawing-received", data);
+  });
+  socket.on("join-room", (room) => {
+    socket.join(room);
   });
 });

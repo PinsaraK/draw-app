@@ -1,10 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CanvasContext } from "../store/CanvasContext";
 import { io } from "socket.io-client";
+import randomstring from "randomstring";
+
+export var roomId = randomstring.generate(6);
 
 const socket = io("http://localhost:8080", {
   transports: ["websocket", "polling", "flashsocket"],
 });
+
+export const joinRoom = (room) => {
+  roomId = room;
+  socket.emit("join-room", roomId);
+  console.log(roomId);
+};
+joinRoom(roomId);
 
 var emitTimer;
 const Canvas = () => {
@@ -42,13 +52,17 @@ const Canvas = () => {
   };
 
   const emitData = (data) => {
-    socket.emit("drawing-sent", data);
+    if (socket) {
+      socket.emit("drawing-sent", data, roomId);
+      console.log("hello");
+    }
   };
 
-  socket.on("drawing-received", (data) => {
-    console.log();
-    socketDrawing(data);
-  });
+  socket &&
+    socket.on("drawing-received", (data) => {
+      console.log();
+      socketDrawing(data);
+    });
 
   return (
     <canvas
