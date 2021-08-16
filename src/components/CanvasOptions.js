@@ -2,6 +2,7 @@ import React from "react";
 import Eraser from "./CanvasComponents/Eraser";
 import ColorExpander from "./CanvasComponents/ColorButtons/ColorExpander";
 import ResetCanvas from "./CanvasComponents/ResetCanvas";
+import InvitePeople from "./CanvasComponents/InvitePeople";
 import styles from "./CanvasOptions.module.css";
 
 const Options = () => {
@@ -16,6 +17,7 @@ const Options = () => {
         <Eraser />
         <ColorExpander />
         <ResetCanvas />
+        <InvitePeople />
       </div>
     </div>
   );
