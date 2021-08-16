@@ -10,9 +10,10 @@ COPY server/package.json ./
 COPY server/package-lock.json ./
 COPY server/server.js ./
 
+RUN npm install -g nodemon
 RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
 
 EXPOSE 8080
-CMD [ "node", "server.js" ]
+CMD [ "nodemon", "-L", "server.js" ]
