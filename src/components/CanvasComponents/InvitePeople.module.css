@@ -1,0 +1,20 @@
+.modal-buttons {
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+  border: #025c5c;
+  border-radius: 10%;
+  background-color: #008b8b;
+  color: white;
+}
+
+.host-container {
+  margin: 1rem 0rem 0rem 0.5rem;
+}
+
+.join-container {
+  margin: 1rem 0rem 0rem 0.5rem;
+}
+
+.input-code {
+  margin-left: 0.5rem;
+}
