@@ -42,7 +42,6 @@ const InvitePeople = () => {
                   Host
                 </button>
               )}
-              {showId && <p>Send your friends the following code: {roomId}</p>}
             </div>
           ) : (
             <div className={styles["host-container"]}>
